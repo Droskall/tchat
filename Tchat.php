@@ -1,7 +1,6 @@
+
 <?php
-
 session_start();
-
 require_once './Classes/DB.php';
 
 //Creating a $task variable with a default value of list
@@ -28,12 +27,7 @@ else{
 function getMessages(){
     $db = new DB();
     $request = $db->getDbLink();
-    $resultats = $request->query("
-        SELECT message.date_publish, user.pseudo, message.message 
-        FROM tchat.message, tchat.user 
-        WHERE message.user_fk = user.id 
-        ORDER BY date_publish DESC LIMIT 20")
-    ;
+    $resultats = $request->query("SELECT message.date_publish, user.pseudo, message.message FROM tchat.message, tchat.user WHERE message.user_fk = user.id ORDER BY date_publish DESC LIMIT 20");
     $messages = $resultats->fetchAll();
     echo json_encode($messages);
 }
@@ -41,7 +35,6 @@ function getMessages(){
 //Function to record a message in the DB
 // Fonction pour enregistrer un message dans le DB
 function postMessage(){
-
     if (!isset($_POST['user_fk']) || !isset($_POST['message'])){
         echo json_encode(["status" => "error", "message" => "Merci de renseigner les champs obligatoire"]);
         return;
@@ -52,7 +45,7 @@ function postMessage(){
 
     $db = new DB();
     $request = $db->getDbLink();
-    $query = $request->prepare("INSERT INTO message SET message = :message, user_fk = :user_fk");
+    $query = $request->prepare("INSERT INTO tchat.message SET message = :message, user_fk = :user_fk");
     $query->execute([
         ":message" => $message,
         ":user_fk" => $user_fk

@@ -1,5 +1,5 @@
-<?php
 
+<?php
 session_start();
 
 //Redirection to the index page if the user is already logged in.
@@ -55,6 +55,6 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion'] === "0604"){
         <button name="buttonValidateI" id="buttonValidateI">S'inscrire</button>
     </form>
 </div>
-<script src="js/connect.js"></script>
+<script src="js/connection.js"></script>
 </body>
 </html>

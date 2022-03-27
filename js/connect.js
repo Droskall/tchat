@@ -1,3 +1,4 @@
+
 let container = document.getElementById('contains');
 let pattern = /^[^ ]+@[^ ]+.[a-z]{2,3}$/;
 

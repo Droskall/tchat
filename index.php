@@ -1,5 +1,5 @@
-<?php
 
+<?php
 session_start();
 
 //Check if the user exists if he does not exist he is redirected to the connect.php page
@@ -7,6 +7,9 @@ session_start();
 if (!isset($_SESSION['user'])){
     header('Location: ./connect.php');
 }
+
+$pseudo = $_SESSION['user']['pseudo'];
+$id = $_SESSION['user']['id'];
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +52,7 @@ if (!isset($_SESSION['user'])){
     </div>
 </div>
 
-<script src="js/app.js"></script>
+<script src="js/appindex.js"></script>
 
 </body>
 </html>

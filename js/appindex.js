@@ -5,15 +5,15 @@
  */
 
 function getMessages(){
-    const requetAjax = new XMLHttpRequest();
-    requetAjax.open("GET", "Tchat.php");
-    requetAjax.onload = function (){
+    const requeteAjax = new XMLHttpRequest();
+    requeteAjax.open("GET", "Tchat.php");
+    requeteAjax.onload = function (){
         //Retrieving all the information encoded in JSON in the Tchat.php page in the getMessages function
         // Récupération de toutes les informations encodées en JSON dans la page Tchat.php de la fonction getMessages
-        const result = JSON.parse(requetAjax.responseText);
+        const resultat = JSON.parse(requeteAjax.responseText);
         //We reverse the data and transform the information in the JSON array
         // Nous inversons les données et transformons les informations dans le tableau JSON
-        const html = result.reverse().map(function(message){
+        const html = resultat.reverse().map(function(message){
             return `
                 <div class="message">
                     <span class="date">${message.date_publish.substring(11, 16)}</span>
@@ -34,7 +34,7 @@ function getMessages(){
         messages.scrollTop = messages.scrollHeight;
     };
 
-    requetAjax.send();
+    requeteAjax.send();
 }
 
 /**
